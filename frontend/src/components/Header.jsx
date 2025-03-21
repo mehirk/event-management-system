@@ -1,25 +1,48 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Header() {
+  const location = useLocation();
+  
   return (
-    <header className="header">
+    <motion.header 
+      className="header"
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Event Management System</h1>
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          Event Management System
+        </motion.h1>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/events">Events</Link>
-            </li>
-            <li>
-              <Link to="/create-event">Create Event</Link>
-            </li>
-          </ul>
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            {[
+              { path: '/', label: 'Home' },
+              { path: '/events', label: 'Events' },
+              { path: '/create-event', label: 'Create Event' }
+            ].map((link) => (
+              <motion.li key={link.path}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link to={link.path} className={location.pathname === link.path ? 'active' : ''}>
+                  {link.label}
+                </Link>
+              </motion.li>
+            ))}
+          </motion.ul>
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 }
 
