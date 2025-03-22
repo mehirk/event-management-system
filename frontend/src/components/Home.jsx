@@ -2,14 +2,28 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const styles = {
-  center: { 
+  hero: { 
     textAlign: 'center',
-    padding: '2rem 0'
+    padding: '3rem 0',
+    position: 'relative'
+  },
+  title: {
+    fontSize: '2.5rem',
+    marginBottom: '1rem',
+    backgroundImage: 'linear-gradient(135deg, #e5e5e5, #a3a3a3)',
+    backgroundClip: 'text',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: '700',
+    letterSpacing: '-0.05em',
+    lineHeight: '1.2'
   },
   subtitle: {
     fontSize: '1.25rem',
     color: 'var(--text-secondary)',
-    marginBottom: '2rem'
+    marginBottom: '2.5rem',
+    maxWidth: '700px',
+    margin: '0 auto 2.5rem'
   },
   buttons: {
     display: 'flex',
@@ -18,16 +32,66 @@ const styles = {
     flexWrap: 'wrap'
   },
   features: {
-    marginTop: '3rem',
+    marginTop: '4rem',
     backgroundColor: 'var(--surface)',
-    padding: '2rem',
-    borderRadius: '0.75rem',
-    boxShadow: 'var(--shadow)'
+    padding: '3rem 2rem',
+    borderRadius: '1rem',
+    boxShadow: 'var(--shadow)',
+    border: '1px solid var(--border)',
   },
-  featureList: {
-    paddingLeft: '1.5rem',
-    listStyleType: 'disc',
-    color: 'var(--text)'
+  featureSection: {
+    textAlign: 'center',
+    marginBottom: '3rem'
+  },
+  featureGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '2rem',
+    marginTop: '3rem'
+  },
+  featureCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '1.5rem',
+    backgroundColor: 'rgba(23, 23, 23, 0.5)',
+    borderRadius: '0.75rem',
+    border: '1px solid var(--border)',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+  },
+  featureIcon: {
+    fontSize: '2rem',
+    marginBottom: '1rem',
+    color: 'var(--primary)',
+    background: 'linear-gradient(135deg, #e5e5e5, #a3a3a3)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  },
+  featureTitle: {
+    fontSize: '1.25rem',
+    fontWeight: '600',
+    marginBottom: '0.75rem'
+  },
+  featureDesc: {
+    color: 'var(--text-secondary)',
+    fontSize: '0.95rem',
+    lineHeight: '1.5'
+  },
+  heroShape: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    zIndex: '-1',
+    opacity: '0.5',
+  },
+  circle: {
+    position: 'absolute', 
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #404040 0%, transparent 70%)',
+    filter: 'blur(60px)'
   }
 };
 
@@ -56,13 +120,13 @@ function Home() {
       transition={{ duration: 0.5 }}
     >
       <motion.div 
-        style={styles.center}
+        style={styles.hero}
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
       >
         <motion.h1 
-          style={{ marginBottom: '1rem' }}
+          style={styles.title}
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
